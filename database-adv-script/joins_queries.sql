@@ -38,7 +38,9 @@ FROM
 LEFT JOIN
     Bookings AS b ON p.listingId = b.propertyId
 LEFT JOIN
-    Reviews AS r ON b.bookingId = r.bookingId;
+    Reviews AS r ON b.bookingId = r.bookingId
+ORDER BY
+    p.title, r.reviewDate DESC; -- Added ORDER BY clause
 
 -- 3. FULL OUTER JOIN: Retrieve all users and all bookings,
 -- even if the user has no booking or a booking is not linked to a user.
