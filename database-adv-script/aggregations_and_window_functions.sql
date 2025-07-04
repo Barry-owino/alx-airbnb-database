@@ -22,7 +22,8 @@ SELECT
     p.listingId,
     p.title AS property_title,
     COUNT(b.bookingId) AS total_bookings_received,
-    RANK() OVER (ORDER BY COUNT(b.bookingId) DESC) AS booking_rank
+    RANK() OVER (ORDER BY COUNT(b.bookingId) DESC) AS booking_rank,
+    ROW_NUMBER() OVER (ORDER BY COUNT(b.bookingId) DESC) AS booking_row_number
 FROM
     Properties AS p
 LEFT JOIN
